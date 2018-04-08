@@ -111,6 +111,12 @@ function queryDocument(options) {
     var query = {};
 
     if ("overview" in options) {
+       
+        query = { $or : [
+            {"overview" :  {"$regex": options.overview, "$options": "i"}  } ,
+            { "tag_list" : {"$regex": options.overview, "$options": "i"}  }
+        ]};
+
         /*
            TODO: Write an assignment statement to ensure that if "overview" appears in the 
            options object, we will match documents that have the value of options.overview 
