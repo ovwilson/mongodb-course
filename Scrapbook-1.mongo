@@ -1,6 +1,7 @@
-mongorestore dump
-
-db.movieDetails.find({rated:"PG-13", year: 2013,"awards.wins":0},{title:1,awards:1,_id:0}).pretty()
-db.movieDetails.find({"countries.1":'Sweden'},{countries:1}).count()
-db.movieDetails.find({genres: ["Comedy","Crime"]},{genres:1}).count()
-db.movieDetails.find({genres: {$all: ["Comedy","Crime"]}},{genres:1}).count()
+db.grades.aggregate( [ { $match: { "scores.type": { $ne: "quiz" } } }   ])
+  //  { $project: { student_id: 1, class_id: 1, scores:1, _id:0 } }     
+   // { $unwind: "$scores.score" },    
+ //   { $match: {"relationships.person.permalink":"roger-ehrenberg"}  },
+ //   { $group: { _id: "$name" } },
+//{ $count: "num" }    
+//] )
